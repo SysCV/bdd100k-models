@@ -1,0 +1,14 @@
+black
+flake8
+flake8-docstrings
+gmplot
+isort
+joblib
+matplotlib
+mypy
+numpy
+pillow
+pylint
+tqdm
+
+git+git://github.com/scalabel/scalabel.git

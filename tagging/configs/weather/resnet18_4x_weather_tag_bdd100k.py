@@ -1,0 +1,15 @@
+"""ResNet18 Backbone.
+
+- 640x640 crop
+- 48 batch size (12 x 4)
+- 4x schedule (48 epochs)
+- 0.1 learning rate, step policy = (24, 36)
+"""
+
+_base_ = [
+    "../_base_/models/resnet18.py",
+    "../_base_/datasets/bdd100k_weather.py",
+    "../_base_/schedules/schedule_4x.py",
+    "../_base_/default_runtime.py",
+]
+load_from = "https://dl.cv.ethz.ch/bdd100k/tagging/weather/models/resnet18_4x_weather_tag_bdd100k.pth"
