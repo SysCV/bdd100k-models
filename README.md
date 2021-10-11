@@ -1,10 +1,10 @@
 # BDD100K Model Zoo
 
-In this repository, we provide popular models for each task in the [BDD100K dataset](https://www.bdd100k.com/).
-
 ![teaser](./doc/images/teaser.png)
 
-For each task in the [BDD100K dataset](https://www.bdd100k.com/), we make publicly available the model weights, evaluation results, predictions, visualizations, as well as scripts to performance evaluation and visualization. The goal is to provide a set of competitive baselines to facilitate research and provide a common benchmark for comparison.
+![visitors](https://visitor-badge.glitch.me/badge?page_id=SysCV.bdd100k-models&left_color=gray&right_color=blue)
+
+In this repository, we provide popular models for each task in the [BDD100K dataset](https://www.bdd100k.com/). For each task in the dataset, we make publicly available the model weights, evaluation results, predictions, visualizations, as well as scripts to performance evaluation and visualization. The goal is to provide a set of competitive baselines to facilitate research and provide a common benchmark for comparison.
 
 The number of pre-trained models in this zoo is :one::one::five:. **You can include your models in this repo as well!** See [contribution](./doc/CONTRIBUTING.md) instructions.
 
