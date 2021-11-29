@@ -1,3 +1,5 @@
+"""GCNet Mask RCNN with ResNet50-FPN, 1x schedule."""
+
 _base_ = "./mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.py"
 model = dict(
     backbone=dict(

@@ -1,3 +1,5 @@
+"""HRNet18, 1x schedule."""
+
 _base_ = "./mask_rcnn_hrnetv2p_w32_1x_ins_seg_bdd100k.py"
 model = dict(
     pretrained="open-mmlab://msra/hrnetv2_w18",

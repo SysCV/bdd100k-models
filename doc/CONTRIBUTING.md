@@ -59,6 +59,7 @@ Each task in BDD100K has its own template and guidelines. Click the links below 
 - [**Drivable Area**](#semantic-segmentation-and-drivable-area)
 - [**Multiple Object Tracking (MOT)**](#mot)
 - [**Multiple Object Tracking and Segmentation (MOTS)**](#mots)
+- [**Pose Estimation**](#pose-estimation)
 
 ## Tagging
 
@@ -379,3 +380,58 @@ Multiple object tracking and segmentation requires detecting, tracking, and segm
 | ResNet-50 |    28.1    |   45.4    |    874     | [scores](https://dl.cv.ethz.ch/bdd100k/mots/scores-val/pcan-frcnn_r50_fpn_12e_mots_bdd100k.json) |    31.9     |    50.4    |     845     | [scores](https://dl.cv.ethz.ch/bdd100k/mots/scores-test/pcan-frcnn_r50_fpn_12e_mots_bdd100k.json) | [config](https://github.com/SysCV/pcan/blob/main/configs/segtrack-frcnn_r50_fpn_12e_bdd10k.py) | [model](https://dl.cv.ethz.ch/bdd100k/mots/models/pcan-frcnn_r50_fpn_12e_mots_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/mots/models/pcan-frcnn_r50_fpn_12e_mots_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/mots/preds/pcan-frcnn_r50_fpn_12e_mots_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/mots/visuals/pcan-frcnn_r50_fpn_12e_mots_bdd100k.zip) |
 
 [[Code](https://github.com/SysCV/pcan)] [[Usage Instructions](https://github.com/SysCV/pcan/blob/main/docs/GET_STARTED.md)]
+
+## Pose Estimation
+
+Template and guidelines below:
+
+### Method Name
+
+[Paper name]() [Venue and Year]
+
+Authors: Author list
+
+<details>
+<summary>Abstract</summary>
+Put your abstract here.
+</details>
+
+#### Results
+
+| Backbone | Input Size | Pose AP-val | Scores-val | Pose AP-test | Scores-test | Config | Weights | Preds | Visuals |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+|          |            |           | [scores]() |             | [scores]() | [config]() | [model]() \| [MD5]() | [preds]() | [visuals]() |
+
+[[Code]()] [[Usage Instructions]()]
+
+Other information.
+
+### Guidelines
+
+- The scores file should be a JSON file with evaluation results for all the BDD100K pose estimation [metrics](https://doc.bdd100k.com/evaluate.html#pose-estimation).
+- The predictions should be a JSON file containing model predictions for the entire validation set.
+- The visuals should be a zip file with pose visualizations on the validation set.
+
+Example below:
+
+### HRNet
+
+[Deep High-Resolution Representation Learning for Visual Recognition](https://arxiv.org/abs/1908.07919) [CVPR 2019 / TPAMI 2020]
+
+Authors: [Jingdong Wang](https://jingdongwang2017.github.io/), [Ke Sun](https://github.com/sunke123), [Tianheng Cheng](https://scholar.google.com/citations?user=PH8rJHYAAAAJ), Borui Jiang, Chaorui Deng, [Yang Zhao](https://yangyangkiki.github.io/), Dong Liu, [Yadong Mu](http://www.muyadong.com/), Mingkui Tan, [Xinggang Wang](https://xinggangw.info/), [Wenyu Liu](http://eic.hust.edu.cn/professor/liuwenyu/), [Bin Xiao](https://www.microsoft.com/en-us/research/people/bixi/)
+
+<details>
+<summary>Abstract</summary>
+High-resolution representations are essential for position-sensitive vision problems, such as human pose estimation, semantic segmentation, and object detection. Existing state-of-the-art frameworks first encode the input image as a low-resolution representation through a subnetwork that is formed by connecting high-to-low resolution convolutions in series (e.g., ResNet, VGGNet), and then recover the high-resolution representation from the encoded low-resolution representation. Instead, our proposed network, named as High-Resolution Network (HRNet), maintains high-resolution representations through the whole process. There are two key characteristics: (i) Connect the high-to-low resolution convolution streams in parallel; (ii) Repeatedly exchange the information across resolutions. The benefit is that the resulting representation is semantically richer and spatially more precise. We show the superiority of the proposed HRNet in a wide range of applications, including human pose estimation, semantic segmentation, and object detection, suggesting that the HRNet is a stronger backbone for computer vision problems. All the codes are available at [this https URL](https://github.com/HRNet).
+</details>
+
+#### Results
+
+| Backbone | Input Size | Pose AP-val | Scores-val | Pose AP-test | Scores-test | Config | Weights | Preds | Visuals |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| HRNet-w32 | 256 * 192 | 48.83 | [scores](https://dl.cv.ethz.ch/bdd100k/pose/scores-val/hrnet_w32_256x192_pose_bdd100k.json) | 46.13 | [scores](https://dl.cv.ethz.ch/bdd100k/pose/scores-test/hrnet_w32_256x192_pose_bdd100k.json) | [config](./configs/hrnet_w32_256x192_pose_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/pose/models/hrnet_w32_256x192_pose_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/pose/models/hrnet_w32_256x192_pose_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/pose/preds/hrnet_w32_256x192_pose_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/pose/visuals/hrnet_w32_256x192_pose_bdd100k.zip) |
+| HRNet-w48 | 256 * 192 | 50.32 | [scores](https://dl.cv.ethz.ch/bdd100k/pose/scores-val/hrnet_w48_256x192_pose_bdd100k.json) | 47.36 | [scores](https://dl.cv.ethz.ch/bdd100k/pose/scores-test/hrnet_w48_256x192_pose_bdd100k.json) | [config](./configs/hrnet_w48_256x192_pose_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/pose/models/hrnet_w48_256x192_pose_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/pose/models/hrnet_w48_256x192_pose_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/pose/preds/hrnet_w48_256x192_pose_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/pose/visuals/hrnet_w48_256x192_pose_bdd100k.zip) |
+| HRNet-w32 | 320 * 256 | 49.86 | [scores](https://dl.cv.ethz.ch/bdd100k/pose/scores-val/hrnet_w32_320x256_pose_bdd100k.json) | 46.90 | [scores](https://dl.cv.ethz.ch/bdd100k/pose/scores-test/hrnet_w32_320x256_pose_bdd100k.json) | [config](./configs/hrnet_w32_320x256_pose_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/pose/models/hrnet_w32_320x256_pose_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/pose/models/hrnet_w32_320x256_pose_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/pose/preds/hrnet_w32_320x256_pose_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/pose/visuals/hrnet_w32_320x256_pose_bdd100k.zip) |
+| HRNet-w48 | 320 * 256 | 50.16 | [scores](https://dl.cv.ethz.ch/bdd100k/pose/scores-val/hrnet_w48_320x256_pose_bdd100k.json) | 47.32 | [scores](https://dl.cv.ethz.ch/bdd100k/pose/scores-test/hrnet_w48_320x256_pose_bdd100k.json) | [config](./configs/hrnet_w48_320x256_pose_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/pose/models/hrnet_w48_320x256_pose_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/pose/models/hrnet_w48_320x256_pose_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/pose/preds/hrnet_w48_320x256_pose_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/pose/visuals/hrnet_w48_320x256_pose_bdd100k.zip) |
+
+[[Code](https://github.com/HRNet)] [[Usage Instructions](https://github.com/SysCV/bdd100k-models/tree/main/pose#usage)]

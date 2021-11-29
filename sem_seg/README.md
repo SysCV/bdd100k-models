@@ -13,6 +13,27 @@ All models are trained on either 8 GeForce RTX 2080 Ti GPUs or 8 TITAN RTX GPUs 
 
 ---
 
+### FCN
+
+[Fully Convolutional Networks for Semantic Segmentation](https://arxiv.org/abs/1411.4038) [CVPR 2015 / TPAMI 2017]
+
+Authors: Jonathan Long, [Evan Shelhamer](http://imaginarynumber.net/), [Trevor Darrell](https://people.eecs.berkeley.edu/~trevor/)
+
+<details>
+<summary>Abstract</summary>
+Convolutional networks are powerful visual models that yield hierarchies of features. We show that convolutional networks by themselves, trained end-to-end, pixels-to-pixels, exceed the state-of-the-art in semantic segmentation. Our key insight is to build "fully convolutional" networks that take input of arbitrary size and produce correspondingly-sized output with efficient inference and learning. We define and detail the space of fully convolutional networks, explain their application to spatially dense prediction tasks, and draw connections to prior models. We adapt contemporary classification networks (AlexNet, the VGG net, and GoogLeNet) into fully convolutional networks and transfer their learned representations by fine-tuning to the segmentation task. We then define a novel architecture that combines semantic information from a deep, coarse layer with appearance information from a shallow, fine layer to produce accurate and detailed segmentations. Our fully convolutional network achieves state-of-the-art segmentation of PASCAL VOC (20\% relative improvement to 62.2% mean IU on 2012), NYUDv2, and SIFT Flow, while inference takes one third of a second for a typical image.
+</details>
+
+#### Results
+
+| Backbone | Iters | Input | mIoU-val | Scores-val | mIoU-test | Scores-test | Config | Weights | Preds | Visuals |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| R-50-D8 | 40K | 769 * 769 | 59.87 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/fcn_r50-d8_769x769_40k_bdd100k_sem_seg_bdd100k.json) | 52.59 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/fcn_r50-d8_769x769_40k_bdd100k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/fcn_r50-d8_769x769_40k_bdd100k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/fcn_r50-d8_769x769_40k_bdd100k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/fcn_r50-d8_769x769_40k_bdd100k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/fcn_r50-d8_769x769_40k_bdd100k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/fcn_r50-d8_769x769_40k_bdd100k_sem_seg_bdd100k.zip) |
+
+[[Code](https://github.com/BVLC/caffe/wiki/Model-Zoo#fcn)] [[Usage Instructions](#usage)]
+
+---
+
 ### PSPNet
 
 [Pyramid Scene Parsing Network](https://arxiv.org/abs/1612.01105) [CVPR 2017]
@@ -51,6 +72,7 @@ In this work, we revisit atrous convolution, a powerful tool to explicitly adjus
 
 | Backbone | Iters | Input | mIoU-val | Scores-val | mIoU-test | Scores-test | Config | Weights | Preds | Visuals |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| R-50-D8 | 40K | 769 * 769 | 61.62 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/deeplabv3_r50-d8_769x769_40k_sem_seg_bdd100k.json) | 55.17 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/deeplabv3_r50-d8_769x769_40k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/deeplabv3_r50-d8_769x769_40k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3_r50-d8_769x769_40k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3_r50-d8_769x769_40k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/deeplabv3_r50-d8_769x769_40k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/deeplabv3_r50-d8_769x769_40k_sem_seg_bdd100k.zip) |
 | R-50-D8 | 40K | 512 * 1024 | 62.16 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/deeplabv3_r50-d8_512x1024_40k_sem_seg_bdd100k.json) | 55.20 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/deeplabv3_r50-d8_512x1024_40k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/deeplabv3_r50-d8_512x1024_40k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3_r50-d8_512x1024_40k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3_r50-d8_512x1024_40k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/deeplabv3_r50-d8_512x1024_40k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/deeplabv3_r50-d8_512x1024_40k_sem_seg_bdd100k.zip) |
 | R-50-D8 | 80K | 512 * 1024 | 62.55 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/deeplabv3_r50-d8_512x1024_80k_sem_seg_bdd100k.json) | 55.19 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/deeplabv3_r50-d8_512x1024_80k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/deeplabv3_r50-d8_512x1024_80k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3_r50-d8_512x1024_80k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3_r50-d8_512x1024_80k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/deeplabv3_r50-d8_512x1024_80k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/deeplabv3_r50-d8_512x1024_80k_sem_seg_bdd100k.zip) |
 | R-101-D8 | 80K | 512 * 1024 | 63.23 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/deeplabv3_r101-d8_512x1024_80k_sem_seg_bdd100k.json) | 56.24 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/deeplabv3_r101-d8_512x1024_80k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/deeplabv3_r101-d8_512x1024_80k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3_r101-d8_512x1024_80k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3_r101-d8_512x1024_80k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/deeplabv3_r101-d8_512x1024_80k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/deeplabv3_r101-d8_512x1024_80k_sem_seg_bdd100k.zip) |
@@ -74,6 +96,7 @@ Spatial pyramid pooling module or encode-decoder structure are used in deep neur
 
 | Backbone | Iters | Input | mIoU-val | Scores-val | mIoU-test | Scores-test | Config | Weights | Preds | Visuals |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| R-50-D8 | 40K | 769 * 769 | 61.22 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/deeplabv3+_r50-d8_769x769_40k_sem_seg_bdd100k.json) | 55.61 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/deeplabv3+_r50-d8_769x769_40k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/deeplabv3+_r50-d8_769x769_40k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3+_r50-d8_769x769_40k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3+_r50-d8_769x769_40k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/deeplabv3+_r50-d8_769x769_40k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/deeplabv3+_r50-d8_769x769_40k_sem_seg_bdd100k.zip) |
 | R-50-D8 | 40K | 512 * 1024 | 62.51 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/deeplabv3+_r50-d8_512x1024_40k_sem_seg_bdd100k.json) | 55.14 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/deeplabv3+_r50-d8_512x1024_40k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/deeplabv3+_r50-d8_512x1024_40k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3+_r50-d8_512x1024_40k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3+_r50-d8_512x1024_40k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/deeplabv3+_r50-d8_512x1024_40k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/deeplabv3+_r50-d8_512x1024_40k_sem_seg_bdd100k.zip) |
 | R-50-D8 | 80K | 512 * 1024 | 63.96 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/deeplabv3+_r50-d8_512x1024_80k_sem_seg_bdd100k.json) | 56.08 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/deeplabv3+_r50-d8_512x1024_80k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/deeplabv3+_r50-d8_512x1024_80k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3+_r50-d8_512x1024_80k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3+_r50-d8_512x1024_80k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/deeplabv3+_r50-d8_512x1024_80k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/deeplabv3+_r50-d8_512x1024_80k_sem_seg_bdd100k.zip) |
 | R-101-D8 | 80K | 512 * 1024 | 64.49 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/deeplabv3+_r101-d8_512x1024_80k_sem_seg_bdd100k.json) | 57.00 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/deeplabv3+_r101-d8_512x1024_80k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/deeplabv3+_r101-d8_512x1024_80k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3+_r101-d8_512x1024_80k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/deeplabv3+_r101-d8_512x1024_80k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/deeplabv3+_r101-d8_512x1024_80k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/deeplabv3+_r101-d8_512x1024_80k_sem_seg_bdd100k.zip) |
@@ -122,6 +145,27 @@ Recent studies witnessed that context features can significantly improve the per
 | R-50-D8 | 80K | 512 * 1024 | 61.99 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/psanet_r50-d8_512x1024_80k_sem_seg_bdd100k.json) | 54.59 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/psanet_r50-d8_512x1024_80k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/psanet_r50-d8_512x1024_80k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/psanet_r50-d8_512x1024_80k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/psanet_r50-d8_512x1024_80k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/psanet_r50-d8_512x1024_80k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/psanet_r50-d8_512x1024_80k_sem_seg_bdd100k.zip) |
 
 [[Code](https://github.com/hszhao/PSANet)] [[Usage Instructions](#usage)]
+
+---
+
+### NLNet
+
+[Non-local Neural Networks](https://arxiv.org/abs/1711.07971) [CVPR 2018]
+
+Authors: [Xiaolong Wang](https://xiaolonw.github.io/), [Ross Girshick](https://www.rossgirshick.info/), [Abhinav Gupta](http://www.cs.cmu.edu/~abhinavg/), [Kaiming He](http://kaiminghe.com/)
+
+<details>
+<summary>Abstract</summary>
+Both convolutional and recurrent operations are building blocks that process one local neighborhood at a time. In this paper, we present non-local operations as a generic family of building blocks for capturing long-range dependencies. Inspired by the classical non-local means method in computer vision, our non-local operation computes the response at a position as a weighted sum of the features at all positions. This building block can be plugged into many computer vision architectures. On the task of video classification, even without any bells and whistles, our non-local models can compete or outperform current competition winners on both Kinetics and Charades datasets. In static image recognition, our non-local models improve object detection/segmentation and pose estimation on the COCO suite of tasks. Code is available at [this https URL](https://github.com/facebookresearch/video-nonlocal-net).
+</details>
+
+#### Results
+
+| Backbone | Iters | Input | mIoU-val | Scores-val | mIoU-test | Scores-test | Config | Weights | Preds | Visuals |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| R-50-D8 | 40K | 512 * 1024 | 61.38 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/nonlocal_r50-d8_512x1024_40k_bdd100k_sem_seg_bdd100k.json) | 54.11 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/nonlocal_r50-d8_512x1024_40k_bdd100k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/nonlocal_r50-d8_512x1024_40k_bdd100k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/nonlocal_r50-d8_512x1024_40k_bdd100k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/nonlocal_r50-d8_512x1024_40k_bdd100k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/nonlocal_r50-d8_512x1024_40k_bdd100k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/nonlocal_r50-d8_512x1024_40k_bdd100k_sem_seg_bdd100k.zip) |
+
+[[Code](https://github.com/facebookresearch/video-nonlocal-net)] [[Usage Instructions](#usage)]
 
 ---
 
@@ -276,6 +320,27 @@ The non-local block is a popular module for strengthening the context modeling a
 | R-101-D8 | 80K | 512 * 1024 | 63.12 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/dnl_r101-d8_512x1024_80k_sem_seg_bdd100k.json) | 56.31 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/dnl_r101-d8_512x1024_80k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/dnl_r101-d8_512x1024_80k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/dnl_r101-d8_512x1024_80k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/dnl_r101-d8_512x1024_80k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/dnl_r101-d8_512x1024_80k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/dnl_r101-d8_512x1024_80k_sem_seg_bdd100k.zip) |
 
 [[Code](https://github.com/yinmh17/DNL-Semantic-Segmentation)] [[Usage Instructions](#usage)]
+
+---
+
+### PointRend
+
+[PointRend: Image Segmentation as Rendering](https://arxiv.org/abs/1912.08193) [CVPR 2020]
+
+Authors: [Alexander Kirillov](https://alexander-kirillov.github.io/), [Yuxin Wu](https://ppwwyyxx.com/), [Kaiming He](http://kaiminghe.com/), [Ross Girshick](https://www.rossgirshick.info/)
+
+<details>
+<summary>Abstract</summary>
+We present a new method for efficient high-quality image segmentation of objects and scenes. By analogizing classical computer graphics methods for efficient rendering with over- and undersampling challenges faced in pixel labeling tasks, we develop a unique perspective of image segmentation as a rendering problem. From this vantage, we present the PointRend (Point-based Rendering) neural network module: a module that performs point-based segmentation predictions at adaptively selected locations based on an iterative subdivision algorithm. PointRend can be flexibly applied to both instance and semantic segmentation tasks by building on top of existing state-of-the-art models. While many concrete implementations of the general idea are possible, we show that a simple design already achieves excellent results. Qualitatively, PointRend outputs crisp object boundaries in regions that are over-smoothed by previous methods. Quantitatively, PointRend yields significant gains on COCO and Cityscapes, for both instance and semantic segmentation. PointRend's efficiency enables output resolutions that are otherwise impractical in terms of memory or computation compared to existing approaches. Code has been made available at [this https URL](https://github.com/facebookresearch/detectron2/tree/main/projects/PointRend).
+</details>
+
+#### Results
+
+| Backbone | Iters | Input | mIoU-val | Scores-val | mIoU-test | Scores-test | Config | Weights | Preds | Visuals |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| R-50-FPN | 40K | 512 * 1024 | 61.80 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/pointrend_r50_512x1024_40k_bdd100k_sem_seg_bdd100k.json) | 53.61 | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/pointrend_r50_512x1024_40k_bdd100k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/pointrend_r50_512x1024_40k_bdd100k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pointrend_r50_512x1024_40k_bdd100k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pointrend_r50_512x1024_40k_bdd100k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/pointrend_r50_512x1024_40k_bdd100k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/pointrend_r50_512x1024_40k_bdd100k_sem_seg_bdd100k.zip) |
+
+[[Code](https://github.com/facebookresearch/detectron2/tree/main/projects/PointRend)] [[Usage Instructions](#usage)]
 
 ---
 

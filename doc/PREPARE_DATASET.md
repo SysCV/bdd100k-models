@@ -12,6 +12,9 @@ On the official download page, the required data and annotations for each task a
 - `object detection` set:
   - images: `100K Images`
   - annotations: `Detection 2020 Labels`
+- `pose estimation` set:
+  - images: `100K Images`
+  - annotations: `Pose Estimation Labels`
 - `instance segmentation` set:
   - images: `10K Images`
   - annotations: `Instance Segmentation`
@@ -42,6 +45,14 @@ mkdir bdd100k/jsons
 python -m bdd100k.label.to_coco -m det \
     -i bdd100k/labels/det_20/det_${SET_NAME}.json \
     -o bdd100k/jsons/det_${SET_NAME}_cocofmt.json
+```
+
+To convert the pose estimation set, you can run:
+```bash
+mkdir bdd100k/jsons
+python -m bdd100k.label.to_coco -m pose \
+    -i bdd100k/labels/pose_21/pose_${SET_NAME}.json \
+    -o bdd100k/jsons/pose_${SET_NAME}_cocofmt.json
 ```
 
 To convert the instance segmentation set, you can run:
@@ -103,6 +114,9 @@ bdd100k-models
         │   ├── det_20
         |   |   ├── det_train.json
         |   |   └── det_val.json
+        │   ├── pose_21
+        |   |   ├── pose_train.json
+        |   |   └── pose_val.json
         │   ├── ins_seg
         |   |   ├── bitmasks
         |   |   |  ├── train
@@ -137,6 +151,8 @@ bdd100k-models
         └── jsons
             ├── det_train_cocofmt.json
             ├── det_val_cocofmt.json
+            ├── pose_train_cocofmt.json
+            ├── pose_val_cocofmt.json
             ├── ins_seg_train_cocofmt.json
             ├── ins_seg_val_cocofmt.json
             ├── box_track_train_cocofmt.json

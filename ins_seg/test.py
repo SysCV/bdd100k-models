@@ -107,9 +107,7 @@ def main() -> None:
 
     cfg = Config.fromfile(args.config)
     if cfg.load_from is None:
-        cfg_name = os.path.split(args.config)[-1].replace(
-            "_bdd100k.py", ".pth"
-        )
+        cfg_name = os.path.split(args.config)[-1].replace(".py", ".pth")
         cfg.load_from = MODEL_SERVER + cfg_name
     if args.cfg_options is not None:
         cfg.merge_from_dict(args.cfg_options)
