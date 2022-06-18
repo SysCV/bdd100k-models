@@ -1,4 +1,4 @@
-"""PointRend with ResNet-50-FPN."""
+"""PointRend with ResNet-50."""
 
 _base_ = [
     "../_base_/models/pointrend_r50.py",
@@ -7,4 +7,4 @@ _base_ = [
     "../_base_/schedules/schedule_40k.py",
 ]
 lr_config = dict(warmup="linear", warmup_iters=200)
-load_from = "https://dl.cv.ethz.ch/bdd100k/drivable/models/pointrend_r50-d8_512x1024_40k_drivable_bdd100k.pth"
+load_from = "https://dl.cv.ethz.ch/bdd100k/drivable/models/pointrend_r50_512x1024_40k_drivable_bdd100k.pth"

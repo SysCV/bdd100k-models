@@ -21,9 +21,9 @@ Multiple object tracking and segmentation requires detecting, tracking, and segm
 
 #### Results
 
-| Detector  | mMOTSA-val | mIDF1-val | ID Sw.-val |                                            Scores-val                                            | mMOTSA-test | mIDF1-test | ID Sw.-test |                                            Scores-test                                            |                                             Config                                             |                                                                                        Weights                                                                                         |                                           Preds                                           |                                            Visuals                                            |
-| :-------: | :--------: | :-------: | :--------: | :----------------------------------------------------------------------------------------------: | :---------: | :--------: | :---------: | :-----------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: |
-| ResNet-50 |    28.1    |   45.4    |    874     | [scores](https://dl.cv.ethz.ch/bdd100k/mots/scores-val/pcan-frcnn_r50_fpn_12e_mots_bdd100k.json) |    31.9     |    50.4    |     845     | [scores](https://dl.cv.ethz.ch/bdd100k/mots/scores-test/pcan-frcnn_r50_fpn_12e_mots_bdd100k.json) | [config](https://github.com/SysCV/pcan/blob/main/configs/segtrack-frcnn_r50_fpn_12e_bdd10k.py) | [model](https://dl.cv.ethz.ch/bdd100k/mots/models/pcan-frcnn_r50_fpn_12e_mots_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/mots/models/pcan-frcnn_r50_fpn_12e_mots_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/mots/preds/pcan-frcnn_r50_fpn_12e_mots_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/mots/visuals/pcan-frcnn_r50_fpn_12e_mots_bdd100k.zip) |
+| Detector | mMOTSA-val | mIDF1-val | ID Sw.-val | Scores-val | mMOTSA-test | mIDF1-test | ID Sw.-test | Scores-test |   Config   |       Weights        |   Preds   |   Visuals   |
+| :------: | :--------: | :-------: | :--------: | :--------: | :---------: | :--------: | :---------: | :---------: | :--------: | :------------------: | :-------: | :---------: |
+| ResNet-50 |    28.1    |   45.4    |    874     | [scores](https://dl.cv.ethz.ch/bdd100k/mots/scores-val/pcan-frcnn_r50_fpn_12e_mots_bdd100k.json) |    31.9     |    50.4    |     845     | [scores](https://dl.cv.ethz.ch/bdd100k/mots/scores-test/pcan-frcnn_r50_fpn_12e_mots_bdd100k.json) | [config](https://github.com/SysCV/pcan/blob/main/configs/segtrack-frcnn_r50_fpn_12e_bdd10k.py) | [model](https://dl.cv.ethz.ch/bdd100k/mots/models/pcan-frcnn_r50_fpn_12e_mots_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/mots/models/pcan-frcnn_r50_fpn_12e_mots_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/mots/preds/pcan-frcnn_r50_fpn_12e_mots_bdd100k.json) \| [masks](https://dl.cv.ethz.ch/bdd100k/mots/preds/pcan-frcnn_r50_fpn_12e_mots_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/mots/visuals/pcan-frcnn_r50_fpn_12e_mots_bdd100k.zip) |
 
 [[Code](https://github.com/SysCV/pcan)] [[Usage Instructions](https://github.com/SysCV/pcan/blob/main/docs/GET_STARTED.md)]
 
@@ -41,13 +41,37 @@ To evaluate the MOT performance on the BDD100K validation set, you can follow th
 
 ```bash
 python -m bdd100k.eval.run -t seg_track \
-    -g ../data/bdd100k/labels/seg_track_20/bitmasks/${SET_NAME} \
-    -r ${OUTPUT_DIR} [--out-file ${RESULTS_FILE}] [--nproc ${NUM_PROCESS}]
+    -g ../data/bdd100k/labels/seg_track_20/${SET_NAME} \
+    -r ${OUTPUT_DIR} \
+    [--out-file ${RESULTS_FILE}] [--nproc ${NUM_PROCESS}]
 ```
 
 #### Test Set
 
 You can obtain the performance on the BDD100K test set by submitting your model predictions to our [evaluation server](https://eval.ai/web/challenges/challenge-page/1295) hosted on EvalAI.
+
+### Output Visualization
+
+For visualization, you can use the visualization tool provided by [Scalabel](https://doc.scalabel.ai/visual.html).
+
+Below is an example:
+
+```python
+import os
+import numpy as np
+from PIL import Image
+from scalabel.label.io import load
+from scalabel.vis.label import LabelViewer
+
+# load prediction frames
+frames = load('$OUTPUT_FILE').frames
+
+viewer = LabelViewer()
+for frame in frames:
+    img = np.array(Image.open(os.path.join('$IMG_DIR', frame.name)))
+    viewer.draw(img, frame)
+    viewer.save(os.path.join('$VIS_DIR', frame.videoName, frame.name))
+```
 
 ## Contribution
 

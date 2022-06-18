@@ -2,7 +2,6 @@
 
 _base_ = "./faster_rcnn_r50_fpn_3x_det_bdd100k.py"
 model = dict(
-    pretrained="open-mmlab://msra/hrnetv2_w32",
     backbone=dict(
         _delete_=True,
         type="HRNet",
@@ -35,6 +34,9 @@ model = dict(
                 num_blocks=(4, 4, 4, 4),
                 num_channels=(32, 64, 128, 256),
             ),
+        ),
+        init_cfg=dict(
+            type="Pretrained", checkpoint="open-mmlab://msra/hrnetv2_w32"
         ),
     ),
     neck=dict(

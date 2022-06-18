@@ -11,6 +11,4 @@ model = dict(
     auxiliary_head=dict(align_corners=True),
     test_cfg=dict(mode="slide", crop_size=(769, 769), stride=(513, 513)),
 )
-data = dict(samples_per_gpu=1, workers_per_gpu=1)
-optimizer = dict(lr=0.005)
 load_from = "https://dl.cv.ethz.ch/bdd100k/drivable/models/danet_r50-d8_769x769_40k_drivable_bdd100k.pth"

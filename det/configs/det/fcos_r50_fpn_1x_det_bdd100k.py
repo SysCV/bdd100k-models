@@ -61,7 +61,4 @@ lr_config = dict(
     step=[8, 11],
 )
 runner = dict(type="EpochBasedRunner", max_epochs=12)
-
-load_from = (
-    "https://dl.cv.ethz.ch/bdd100k/det/models/fcos_r50_fpn_1x_det_bdd100k.pth"
-)
+load_from = "https://dl.cv.ethz.ch/bdd100k/det/models/fcos_r50_fpn_1x_det_bdd100k.pth"

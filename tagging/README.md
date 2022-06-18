@@ -211,6 +211,29 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch \
     --out ${OUTPUT_DIR} [--options] --launcher pytorch
 ```
 
+### Output Visualization
+
+For visualization, you can use the visualization tool provided by [Scalabel](https://doc.scalabel.ai/visual.html).
+
+Below is an example:
+
+```python
+import os
+import numpy as np
+from PIL import Image
+from scalabel.label.io import load
+from scalabel.vis.label import LabelViewer
+
+# load prediction frames
+frames = load('$OUTPUT_DIR/tagging.json').frames
+
+viewer = LabelViewer()
+for frame in frames:
+    img = np.array(Image.open(os.path.join('$IMG_DIR', frame.name)))
+    viewer.draw(img, frame)
+    viewer.save(os.path.join('$VIS_DIR', frame.name))
+```
+
 ## Contribution
 
 **You can include your models in this repo as well!** Please follow the [contribution](../doc/CONTRIBUTING.md) instructions.

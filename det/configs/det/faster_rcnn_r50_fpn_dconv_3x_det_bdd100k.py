@@ -7,4 +7,4 @@ model = dict(
         stage_with_dcn=(False, True, True, True),
     )
 )
-load_from = "https://dl.cv.ethz.ch/bdd100k/det/models/faster_rcnn_r50_fpn_deconv_3x_det_bdd100k.pth"
+load_from = "https://dl.cv.ethz.ch/bdd100k/det/models/faster_rcnn_r50_fpn_dconv_3x_det_bdd100k.pth"

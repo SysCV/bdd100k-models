@@ -45,7 +45,4 @@ data = dict(
 # learning policy
 lr_config = dict(step=[24, 33])
 runner = dict(type="EpochBasedRunner", max_epochs=36)
-
-load_from = (
-    "https://dl.cv.ethz.ch/bdd100k/det/models/fcos_r50_fpn_3x_det_bdd100k.pth"
-)
+load_from = "https://dl.cv.ethz.ch/bdd100k/det/models/fcos_r50_fpn_3x_det_bdd100k.pth"

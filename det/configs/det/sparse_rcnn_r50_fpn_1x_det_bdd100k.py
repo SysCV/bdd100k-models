@@ -1,4 +1,4 @@
-"""Sparse RCNN with ResNet50-FPN, 1x schedule."""
+"""Sparse RCNN with ResNet50-FPN, 100 proposals, 1x schedule."""
 
 _base_ = [
     "../_base_/datasets/bdd100k.py",
@@ -9,7 +9,6 @@ num_stages = 6
 num_proposals = 100
 model = dict(
     type="SparseRCNN",
-    pretrained="torchvision://resnet50",
     backbone=dict(
         type="ResNet",
         depth=50,
@@ -19,6 +18,7 @@ model = dict(
         norm_cfg=dict(type="BN", requires_grad=True),
         norm_eval=True,
         style="pytorch",
+        init_cfg=dict(type="Pretrained", checkpoint="torchvision://resnet50"),
     ),
     neck=dict(
         type="FPN",
@@ -107,4 +107,7 @@ model = dict(
 # optimizer
 optimizer = dict(_delete_=True, type="AdamW", lr=0.000025, weight_decay=0.0001)
 optimizer_config = dict(_delete_=True, grad_clip=dict(max_norm=1, norm_type=2))
+# learning policy
+lr_config = dict(policy="step", step=[8, 11])
+runner = dict(type="EpochBasedRunner", max_epochs=12)
 load_from = "https://dl.cv.ethz.ch/bdd100k/det/models/sparse_rcnn_r50_fpn_1x_det_bdd100k.pth"

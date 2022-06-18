@@ -1,7 +1,6 @@
 # model settings
 model = dict(
     type="CascadeRCNN",
-    pretrained="torchvision://resnet50",
     backbone=dict(
         type="ResNet",
         depth=50,
@@ -11,6 +10,7 @@ model = dict(
         norm_cfg=dict(type="BN", requires_grad=True),
         norm_eval=True,
         style="pytorch",
+        init_cfg=dict(type="Pretrained", checkpoint="torchvision://resnet50"),
     ),
     neck=dict(
         type="FPN",

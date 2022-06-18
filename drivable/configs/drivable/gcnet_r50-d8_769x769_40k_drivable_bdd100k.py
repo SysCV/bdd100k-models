@@ -1,10 +1,10 @@
 """GCNet with ResNet-50-d8."""
 
 _base_ = [
-    ".../_base_drive_/models/gcnet_r50-d8.py",
-    ".../_base_drive_/datasets/bdd100k.py",
-    ".../_base_drive_/default_runtime.py",
-    ".../_base_drive_/schedules/schedule_40k.py",
+    "../_base_/models/gcnet_r50-d8.py",
+    "../_base_/datasets/bdd100k.py",
+    "../_base_/default_runtime.py",
+    "../_base_/schedules/schedule_40k.py",
 ]
 model = dict(
     decode_head=dict(align_corners=True),

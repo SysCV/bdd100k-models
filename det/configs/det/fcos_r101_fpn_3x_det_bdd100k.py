@@ -10,6 +10,4 @@ model = dict(
         ),
     )
 )
-load_from = (
-    "https://dl.cv.ethz.ch/bdd100k/det/models/fcos_r101_fpn_3x_det_bdd100k.pth"
-)
+load_from = "https://dl.cv.ethz.ch/bdd100k/det/models/fcos_r101_fpn_3x_det_bdd100k.pth"

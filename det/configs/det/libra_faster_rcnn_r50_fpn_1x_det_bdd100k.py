@@ -1,6 +1,7 @@
 """Libra R-CNN with ResNet50-FPN, 1x schedule."""
 
 _base_ = "./faster_rcnn_r50_fpn_1x_det_bdd100k.py"
+# model settings
 model = dict(
     neck=[
         dict(

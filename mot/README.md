@@ -42,7 +42,8 @@ To evaluate the MOT performance on the BDD100K validation set, you can follow th
 ```bash
 python -m bdd100k.eval.run -t box_track \
     -g ../data/bdd100k/labels/box_track_20/${SET_NAME} \
-    -r ${OUTPUT_FILE} [--out-file ${RESULTS_FILE}] [--nproc ${NUM_PROCESS}]
+    -r ${OUTPUT_FILE} \
+    [--out-file ${RESULTS_FILE}] [--nproc ${NUM_PROCESS}]
 ```
 
 #### Test Set
@@ -69,7 +70,7 @@ viewer = LabelViewer()
 for frame in frames:
     img = np.array(Image.open(os.path.join('$IMG_DIR', frame.name)))
     viewer.draw(img, frame)
-    viewer.savefig(os.path.join('$VIS_DIR', frame.name))
+    viewer.save(os.path.join('$VIS_DIR', frame.videoName, frame.name))
 ```
 
 ## Contribution

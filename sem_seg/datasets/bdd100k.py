@@ -6,7 +6,10 @@ from typing import List
 import mmcv
 import numpy as np
 from mmseg.datasets import DATASETS, CustomDataset
-from PIL import Image
+
+from scalabel.label.io import save
+from scalabel.label.transforms import mask_to_rle
+from scalabel.label.typing import Frame, Label
 
 
 @DATASETS.register_module()
@@ -57,36 +60,37 @@ class BDD100KSemSegDataset(CustomDataset):  # type: ignore
         [119, 11, 32],
     ]
 
-    def results2img(
-        self, results: List[np.ndarray], imgfile_prefix: str  # type: ignore
-    ) -> List[str]:
-        """Write the segmentation results to images."""
-        mmcv.mkdir_or_exist(imgfile_prefix)
-        result_files = []
-        prog_bar = mmcv.ProgressBar(len(self))
-        for idx in range(len(self)):
-            result = results[idx]
-            filename = self.img_infos[idx]["filename"]
-            basename = osp.splitext(osp.basename(filename))[0]
-
-            png_filename = osp.join(imgfile_prefix, f"{basename}.png")
-
-            output = Image.fromarray(result.astype(np.uint8)).convert("P")
-            output.save(png_filename)
-            result_files.append(png_filename)
-            prog_bar.update()
-
-        return result_files
-
     def format_results(  # pylint: disable=arguments-differ
-        self, results: List[np.ndarray], imgfile_prefix: str  # type: ignore
-    ) -> List[str]:
+        self, results: List[np.ndarray], out_dir: str  # type: ignore
+    ) -> None:
         """Format the results into dir (standard format for BDD100K)."""
         assert isinstance(results, list), "results must be a list"
         assert len(results) == len(self), (
             "The length of results is not equal to the dataset len: "
             f"{len(results)} != {len(self)}"
         )
-        result_files = self.results2img(results, imgfile_prefix)
+        mmcv.mkdir_or_exist(out_dir)
 
-        return result_files
+        frames = []
+        ann_id = 0
+        prog_bar = mmcv.ProgressBar(len(self))
+        for idx in range(len(self)):
+            result = results[idx]
+            filename = self.img_infos[idx]["filename"]
+            frame = Frame(name=filename, labels=[])
+            frames.append(frame)
+            assert frame.labels is not None
+
+            for pid in np.unique(result):
+                ann_id += 1
+                mask = (result == pid).astype(np.uint8)
+                label = Label(
+                    id=str(ann_id),
+                    rle=mask_to_rle(mask),
+                    category=self.CLASSES[pid],
+                )
+                frame.labels.append(label)
+
+            prog_bar.update()
+
+        save(osp.join(out_dir, "sem_seg.json"), frames)

@@ -6,10 +6,7 @@ _base_ = [
     "../_base_/schedules/schedule_1x.py",
     "../_base_/default_runtime.py",
 ]
-data_cfg = dict(
-    image_size=[256, 320],
-    heatmap_size=[64, 80],
-)
+data_cfg = dict(image_size=[256, 320], heatmap_size=[64, 80])
 data = dict(
     train=dict(data_cfg=data_cfg),
     val=dict(data_cfg=data_cfg),
