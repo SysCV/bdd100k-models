@@ -21,6 +21,9 @@ On the official download page, the required data and annotations for each task a
 - `semantic segmentation` set:
   - images: `10K Images`
   - annotations: `Semantic Segmentation`
+- `panoptic segmentation` set:
+  - images: `10K Images`
+  - annotations: `Panoptic Segmentation`
 - `drivable area` set:
   - images: `100K Images`
   - annotations: `Drivable Area`
@@ -35,7 +38,7 @@ We list all the tasks here for completeness, but you only need to download the i
 
 ### Convert Annotations
 
-For object detection and instance segmentation, please transform the official annotation files to COCO style with the provided [scripts](https://doc.bdd100k.com/format.html#to-coco) by BDD100K.
+For object detection, pose estimation, instance segmentation, and panoptic segmentation, please transform the official annotation files to COCO style with the provided [scripts](https://doc.bdd100k.com/format.html#to-coco) by BDD100K.
 
 First, uncompress the downloaded annotation file and you will obtain a folder named `bdd100k`.
 
@@ -55,12 +58,30 @@ python -m bdd100k.label.to_coco -m pose \
     -o bdd100k/jsons/pose_${SET_NAME}_cocofmt.json
 ```
 
-To convert the instance segmentation set, you can run:
+To convert the instance segmentation set, you can either run (for bitmasks):
 ```bash
 mkdir bdd100k/jsons
 python -m bdd100k.label.to_coco -m ins_seg --only-mask \
     -i bdd100k/labels/ins_seg/bitmasks/${SET_NAME} \
     -o bdd100k/jsons/ins_seg_${SET_NAME}_cocofmt.json \
+    [--nproc ${NUM_PROCESS}]
+```
+or run (for RLEs):
+```bash
+mkdir bdd100k/jsons
+python -m bdd100k.label.to_coco -m ins_seg \
+    -i bdd100k/labels/ins_seg/rles/ins_seg_${SET_NAME}.json \
+    -o bdd100k/jsons/ins_seg_${SET_NAME}_cocofmt.json \
+    [--nproc ${NUM_PROCESS}]
+```
+
+To convert the panoptic segmentation set, you can either run (for bitmasks):
+```bash
+mkdir bdd100k/jsons
+python -m bdd100k.label.to_coco_panseg \
+    -i bdd100k/labels/pan_seg/bitmasks/${SET_NAME} \
+    -o bdd100k/jsons/pan_seg_${SET_NAME}_cocofmt.json \
+    --pan-mask-base bdd100k/jsons/pan_seg/masks/${SET_NAME} \
     [--nproc ${NUM_PROCESS}]
 ```
 
@@ -74,11 +95,19 @@ python -m bdd100k.label.to_coco -m box_track \
     -o bdd100k/jsons/box_track_${SET_NAME}_cocofmt.json
 ```
 
-To convert the segmentation tracking set, you can run:
+To convert the segmentation tracking set, you can either run (for bitmasks):
+```bash
+mkdir bdd100k/jsons
+python -m bdd100k.label.to_coco -m seg_track --only-mask \
+    -i bdd100k/labels/seg_track_20/bitmasks/${SET_NAME} \
+    -o bdd100k/jsons/seg_track_${SET_NAME}_cocofmt.json \
+    [--nproc ${NUM_PROCESS}]
+```
+or run (for RLEs):
 ```bash
 mkdir bdd100k/jsons
 python -m bdd100k.label.to_coco -m seg_track \
-    -i bdd100k/labels/seg_track_20/bitmasks/${SET_NAME} \
+    -i bdd100k/labels/seg_track_20/rles/${SET_NAME} \
     -o bdd100k/jsons/seg_track_${SET_NAME}_cocofmt.json \
     [--nproc ${NUM_PROCESS}]
 ```
@@ -122,19 +151,29 @@ bdd100k-models
         |   |   |  ├── train
         |   |   |  └── val
         |   |   ├── colormaps
-        |   |   └── polygons
+        |   |   ├── polygons
+        |   |   └── rles
         │   ├── sem_seg
         |   |   ├── masks
         |   |   |  ├── train
         |   |   |  └── val
         |   |   ├── colormaps
-        |   |   └── polygons
+        |   |   ├── polygons
+        |   |   └── rles
+        │   ├── pan_seg
+        |   |   ├── bitmasks
+        |   |   |  ├── train
+        |   |   |  └── val
+        |   |   ├── colormaps
+        |   |   ├── polygons
+        |   |   └── rles
         │   ├── drivable
         |   |   ├── masks
         |   |   |  ├── train
         |   |   |  └── val
         |   |   ├── colormaps
-        |   |   └── polygons
+        |   |   ├── polygons
+        |   |   └── rles
         |   ├── box_track_20
         |   |   ├── train
         |   |   └── val
@@ -145,7 +184,10 @@ bdd100k-models
         |       ├── colormaps
         |       |   ├── train
         |       |   └── val
-        |       └── polygons
+        |       ├── polygons
+        |       |   ├── train
+        |       |   └── val
+        |       └── rles
         |           ├── train
         |           └── val
         └── jsons
@@ -155,6 +197,12 @@ bdd100k-models
             ├── pose_val_cocofmt.json
             ├── ins_seg_train_cocofmt.json
             ├── ins_seg_val_cocofmt.json
+            ├── pan_seg_train_cocofmt.json
+            ├── pan_seg_val_cocofmt.json
+            ├── pan_seg
+            |   └── masks
+            |       ├── train
+            |       └── val
             ├── box_track_train_cocofmt.json
             ├── box_track_val_cocofmt.json
             ├── seg_track_train_cocofmt.json

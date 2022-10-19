@@ -57,9 +57,12 @@ Each task in BDD100K has its own template and guidelines. Click the links below 
 - [**Instance Segmentation**](#instance-segmentation)
 - [**Semantic Segmentation**](#semantic-segmentation-and-drivable-area)
 - [**Drivable Area**](#semantic-segmentation-and-drivable-area)
+- [**Panoptic Segmentation**](#panoptic-segmentation)
 - [**Multiple Object Tracking (MOT)**](#mot)
 - [**Multiple Object Tracking and Segmentation (MOTS)**](#mots)
 - [**Pose Estimation**](#pose-estimation)
+
+---
 
 ## Tagging
 
@@ -107,13 +110,15 @@ Visual recognition requires rich representations that span levels from low to hi
 
 #### Results
 
-| Backbone |   Input    | Acc-val |                                                  Scores-val                                                   | Acc-test |                                                  Scores-test                                                   |                                Config                                |                                                                                                     Weights                                                                                                      |                                                  Preds                                                  |                                                  Visuals                                                   |
-| :------: | :--------: | :-----: | :-----------------------------------------------------------------------------------------------------------: | :------: | :------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: |
+| Backbone | Input | Acc-val | Scores-val | Acc-test | Scores-test |   Config   |       Weights        |   Preds   |   Visuals   |
+| :------: | :---: | :-----: | :--------: | :------: | :---------: | :--------: | :------------------: | :-------: | :---------: |
 |  DLA-34  | 224 \* 224 |  81.35  | [scores](https://dl.cv.ethz.ch/bdd100k/tagging/weather/scores-val/dla34_5x_224x224_weather_tag_bdd100k.json)  |  81.24   | [scores](https://dl.cv.ethz.ch/bdd100k/tagging/weather/scores-test/dla34_5x_224x224_weather_tag_bdd100k.json)  | [config](./configs/weather/dla34_5x_224x224_weather_tag_bdd100k.py)  |  [model](https://dl.cv.ethz.ch/bdd100k/tagging/weather/models/dla34_5x_224x224_weather_tag_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/tagging/weather/models/dla34_5x_224x224_weather_tag_bdd100k.md5)  | [preds](https://dl.cv.ethz.ch/bdd100k/tagging/weather/preds/dla34_5x_224x224_weather_tag_bdd100k.json)  | [visuals](https://dl.cv.ethz.ch/bdd100k/tagging/weather/visuals/dla34_5x_224x224_weather_tag_bdd100k.zip)  |
 |  DLA-60  | 224 \* 224 |  79.99  | [scores](https://dl.cv.ethz.ch/bdd100k/tagging/weather/scores-val/dla60_5x_224x224_weather_tag_bdd100k.json)  |  79.65   | [scores](https://dl.cv.ethz.ch/bdd100k/tagging/weather/scores-test/dla60_5x_224x224_weather_tag_bdd100k.json)  | [config](./configs/weather/dla60_5x_224x224_weather_tag_bdd100k.py)  |  [model](https://dl.cv.ethz.ch/bdd100k/tagging/weather/models/dla60_5x_224x224_weather_tag_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/tagging/weather/models/dla60_5x_224x224_weather_tag_bdd100k.md5)  | [preds](https://dl.cv.ethz.ch/bdd100k/tagging/weather/preds/dla60_5x_224x224_weather_tag_bdd100k.json)  | [visuals](https://dl.cv.ethz.ch/bdd100k/tagging/weather/visuals/dla60_5x_224x224_weather_tag_bdd100k.zip)  |
 | DLA-X-60 | 224 \* 224 |  80.22  | [scores](https://dl.cv.ethz.ch/bdd100k/tagging/weather/scores-val/dla60x_5x_224x224_weather_tag_bdd100k.json) |  79.80   | [scores](https://dl.cv.ethz.ch/bdd100k/tagging/weather/scores-test/dla60x_5x_224x224_weather_tag_bdd100k.json) | [config](./configs/weather/dla60x_5x_224x224_weather_tag_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/tagging/weather/models/dla60x_5x_224x224_weather_tag_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/tagging/weather/models/dla60x_5x_224x224_weather_tag_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/tagging/weather/preds/dla60x_5x_224x224_weather_tag_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/tagging/weather/visuals/dla60x_5x_224x224_weather_tag_bdd100k.zip) |
 
 [[Code](https://github.com/ucbdrive/dla)] [[Usage Instructions](https://github.com/SysCV/bdd100k-models/tree/main/tagging#usage)]
+
+---
 
 ## Detection
 
@@ -161,13 +166,16 @@ State-of-the-art object detection networks depend on region proposal algorithms 
 
 #### Results
 
-| Backbone  | Lr schd | MS-train | Box AP-val |                                           Scores-val                                            | Box AP-test |                                           Scores-test                                            |                             Config                             |                                                                                       Weights                                                                                        |                                           Preds                                           |                                           Visuals                                            |
-| :-------: | :-----: | :------: | :--------: | :---------------------------------------------------------------------------------------------: | :---------: | :----------------------------------------------------------------------------------------------: | :------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------: |
+| Backbone | Lr schd | MS-train | Box AP-val | Scores-val | Box AP-test | Scores-test |   Config   |       Weights        |   Preds   |   Visuals   |
+| :------: | :-----: | :------: | :--------: | :--------: | :---------: | :---------: | :--------: | :------------------: | :-------: | :---------: |
 | R-50-FPN  |   1x    |          |   31.04    | [scores](https://dl.cv.ethz.ch/bdd100k/det/scores-val/faster_rcnn_r50_fpn_1x_det_bdd100k.json)  |    29.78    | [scores](https://dl.cv.ethz.ch/bdd100k/det/scores-test/faster_rcnn_r50_fpn_1x_det_bdd100k.json)  | [config](./configs/det/faster_rcnn_r50_fpn_1x_det_bdd100k.py)  |  [model](https://dl.cv.ethz.ch/bdd100k/det/models/faster_rcnn_r50_fpn_1x_det_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/det/models/faster_rcnn_r50_fpn_1x_det_bdd100k.md5)  | [preds](https://dl.cv.ethz.ch/bdd100k/det/preds/faster_rcnn_r50_fpn_1x_det_bdd100k.json)  | [visuals](https://dl.cv.ethz.ch/bdd100k/det/visuals/faster_rcnn_r50_fpn_1x_det_bdd100k.zip)  |
 | R-50-FPN  |   3x    |    ✓     |   32.30    | [scores](https://dl.cv.ethz.ch/bdd100k/det/scores-val/faster_rcnn_r50_fpn_3x_det_bdd100k.json)  |    31.45    | [scores](https://dl.cv.ethz.ch/bdd100k/det/scores-test/faster_rcnn_r50_fpn_3x_det_bdd100k.json)  | [config](./configs/det/faster_rcnn_r50_fpn_3x_det_bdd100k.py)  |  [model](https://dl.cv.ethz.ch/bdd100k/det/models/faster_rcnn_r50_fpn_3x_det_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/det/models/faster_rcnn_r50_fpn_3x_det_bdd100k.md5)  | [preds](https://dl.cv.ethz.ch/bdd100k/det/preds/faster_rcnn_r50_fpn_3x_det_bdd100k.json)  | [visuals](https://dl.cv.ethz.ch/bdd100k/det/visuals/faster_rcnn_r50_fpn_3x_det_bdd100k.zip)  |
 | R-101-FPN |   3x    |    ✓     |   32.71    | [scores](https://dl.cv.ethz.ch/bdd100k/det/scores-val/faster_rcnn_r101_fpn_3x_det_bdd100k.json) |    31.96    | [scores](https://dl.cv.ethz.ch/bdd100k/det/scores-test/faster_rcnn_r101_fpn_3x_det_bdd100k.json) | [config](./configs/det/faster_rcnn_r101_fpn_3x_det_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/det/models/faster_rcnn_r101_fpn_3x_det_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/det/models/faster_rcnn_r101_fpn_3x_det_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/det/preds/faster_rcnn_r101_fpn_3x_det_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/det/visuals/faster_rcnn_r101_fpn_3x_det_bdd100k.zip) |
 
 [[Code](https://github.com/facebookresearch/detectron2)] [[Usage Instructions](https://github.com/SysCV/bdd100k-models/tree/main/det#usage)]
+
+
+---
 
 ## Instance Segmentation
 
@@ -197,7 +205,7 @@ Other information.
 ### Guidelines
 
 - The scores file should be a JSON file with evaluation results for all the BDD100K instance segmentation [metrics](https://doc.bdd100k.com/evaluate.html#instance-segmentation).
-- The predictions should be a zip file containing model predictions for the entire validation set (both bitmasks and score JSON file).
+- The predictions should be a JSON file containing model predictions for the entire validation set.
 - The visuals should be a zip file with instance segmentation visualizations on the validation set.
 
 Example below:
@@ -215,13 +223,15 @@ We present a conceptually simple, flexible, and general framework for object ins
 
 #### Results
 
-| Backbone  | Lr schd | MS-train | Mask AP-val | Box AP-val |                                              Scores-val                                               | Mask AP-test | Box AP-test |                                              Scores-test                                               |                                Config                                |                                                                                             Weights                                                                                              |                                             Preds                                              |                                              Visuals                                               |
-| :-------: | :-----: | :------: | :---------: | :--------: | :---------------------------------------------------------------------------------------------------: | :----------: | :---------: | :----------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------: |
-| R-50-FPN  |   1x    |          |    16.24    |   22.34    | [scores](https://dl.cv.ethz.ch/bdd100k/ins_seg/scores-val/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.json)  |    14.86     |    19.59    | [scores](https://dl.cv.ethz.ch/bdd100k/ins_seg/scores-test/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.json)  | [config](./configs/ins_seg/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.py)  |  [model](https://dl.cv.ethz.ch/bdd100k/ins_seg/models/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/ins_seg/models/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.md5)  | [preds](https://dl.cv.ethz.ch/bdd100k/ins_seg/preds/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.zip)  | [visuals](https://dl.cv.ethz.ch/bdd100k/ins_seg/visuals/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.zip)  |
-| R-50-FPN  |   3x    |    ✓     |    19.88    |   25.93    | [scores](https://dl.cv.ethz.ch/bdd100k/ins_seg/scores-val/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.json)  |    17.46     |    22.32    | [scores](https://dl.cv.ethz.ch/bdd100k/ins_seg/scores-test/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.json)  | [config](./configs/ins_seg/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.py)  |  [model](https://dl.cv.ethz.ch/bdd100k/ins_seg/models/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/ins_seg/models/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.md5)  | [preds](https://dl.cv.ethz.ch/bdd100k/ins_seg/preds/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.zip)  | [visuals](https://dl.cv.ethz.ch/bdd100k/ins_seg/visuals/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.zip)  |
-| R-101-FPN |   3x    |    ✓     |    20.51    |   26.08    | [scores](https://dl.cv.ethz.ch/bdd100k/ins_seg/scores-val/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.json) |    17.88     |    22.01    | [scores](https://dl.cv.ethz.ch/bdd100k/ins_seg/scores-test/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.json) | [config](./configs/ins_seg/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/ins_seg/models/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/ins_seg/models/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/ins_seg/preds/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/ins_seg/visuals/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.zip) |
+| Backbone | Lr schd | MS-train | Mask AP-val | Box AP-val | Scores-val | Mask AP-test | Box AP-test | Scores-test |   Config   |       Weights        |   Preds   |   Visuals   |
+| :------: | :-----: | :------: | :---------: | :--------: | :--------: | :----------: | :---------: | :---------: | :--------: | :------------------: | :-------: | :---------: |
+| R-50-FPN  |   1x    |          |    16.24    |   22.34    | [scores](https://dl.cv.ethz.ch/bdd100k/ins_seg/scores-val/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.json)  |    14.86     |    19.59    | [scores](https://dl.cv.ethz.ch/bdd100k/ins_seg/scores-test/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.json)  | [config](./configs/ins_seg/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.py)  |  [model](https://dl.cv.ethz.ch/bdd100k/ins_seg/models/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/ins_seg/models/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.md5)  | [preds](https://dl.cv.ethz.ch/bdd100k/ins_seg/preds/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.json)  | [visuals](https://dl.cv.ethz.ch/bdd100k/ins_seg/visuals/mask_rcnn_r50_fpn_1x_ins_seg_bdd100k.zip)  |
+| R-50-FPN  |   3x    |    ✓     |    19.88    |   25.93    | [scores](https://dl.cv.ethz.ch/bdd100k/ins_seg/scores-val/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.json)  |    17.46     |    22.32    | [scores](https://dl.cv.ethz.ch/bdd100k/ins_seg/scores-test/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.json)  | [config](./configs/ins_seg/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.py)  |  [model](https://dl.cv.ethz.ch/bdd100k/ins_seg/models/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/ins_seg/models/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.md5)  | [preds](https://dl.cv.ethz.ch/bdd100k/ins_seg/preds/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.json)  | [visuals](https://dl.cv.ethz.ch/bdd100k/ins_seg/visuals/mask_rcnn_r50_fpn_3x_ins_seg_bdd100k.zip)  |
+| R-101-FPN |   3x    |    ✓     |    20.51    |   26.08    | [scores](https://dl.cv.ethz.ch/bdd100k/ins_seg/scores-val/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.json) |    17.88     |    22.01    | [scores](https://dl.cv.ethz.ch/bdd100k/ins_seg/scores-test/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.json) | [config](./configs/ins_seg/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/ins_seg/models/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/ins_seg/models/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/ins_seg/preds/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/ins_seg/visuals/mask_rcnn_r101_fpn_3x_ins_seg_bdd100k.zip) |
 
 [[Code](https://github.com/facebookresearch/detectron2)] [[Usage Instructions](https://github.com/SysCV/bdd100k-models/tree/main/ins_seg#usage)]
+
+---
 
 ## Semantic Segmentation and Drivable Area
 
@@ -251,7 +261,7 @@ Other information.
 ### Guidelines
 
 - The scores file should be a JSON file with evaluation results for all the BDD100K semantic segmentation [metrics](https://doc.bdd100k.com/evaluate.html#semantic-segmentation) or drivable area [metrics](https://doc.bdd100k.com/evaluate.html#drivable-area).
-- The predictions should be a zip file containing model predictions for the entire validation set (bitmasks).
+- The predictions should be a JSON file containing model predictions for the entire validation set.
 - The visuals should be a zip file with segmentation visualizations on the validation set.
 
 Example below:
@@ -269,13 +279,71 @@ Scene parsing is challenging for unrestricted open vocabulary and diverse scenes
 
 #### Results
 
-| Backbone | Iters |    Input    | mIoU-val |                                                 Scores-val                                                  | mIoU-test |                                                 Scores-test                                                  |                                   Config                                   |                                                                                                   Weights                                                                                                    |                                                Preds                                                 |                                                 Visuals                                                  |
-| :------: | :---: | :---------: | :------: | :---------------------------------------------------------------------------------------------------------: | :-------: | :----------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------: |
-| R-50-D8  |  40K  | 512 \* 1024 |  61.88   | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.json)  |   54.50   | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.json)  | [config](./configs/sem_seg/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.py)  |  [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.md5)  | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.zip)  | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.zip)  |
-| R-50-D8  |  80K  | 512 \* 1024 |  62.03   | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.json)  |   54.99   | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.json)  | [config](./configs/sem_seg/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.py)  |  [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.md5)  | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.zip)  | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.zip)  |
-| R-101-D8 |  80K  | 512 \* 1024 |  63.62   | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.json) |   56.32   | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.zip) |
+| Backbone | Iters | Input | mIoU-val | Scores-val | mIoU-test | Scores-test |   Config   |       Weights        |   Preds   |   Visuals   |
+| :------: | :---: | :---: | :------: | :--------: | :-------: | :---------: | :--------: | :------------------: | :-------: | :---------: |
+| R-50-D8  |  40K  | 512 \* 1024 |  61.88   | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.json)  |   54.50   | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.json)  | [config](./configs/sem_seg/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.py)  |  [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.md5)  | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.json)  | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/pspnet_r50-d8_512x1024_40k_sem_seg_bdd100k.zip)  |
+| R-50-D8  |  80K  | 512 \* 1024 |  62.03   | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.json)  |   54.99   | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.json)  | [config](./configs/sem_seg/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.py)  |  [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.md5)  | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.json)  | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/pspnet_r50-d8_512x1024_80k_sem_seg_bdd100k.zip)  |
+| R-101-D8 |  80K  | 512 \* 1024 |  63.62   | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-val/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.json) |   56.32   | [scores](https://dl.cv.ethz.ch/bdd100k/sem_seg/scores-test/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.json) | [config](./configs/sem_seg/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/sem_seg/models/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/sem_seg/preds/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/sem_seg/visuals/pspnet_r101-d8_512x1024_80k_sem_seg_bdd100k.zip) |
 
 [[Code](https://github.com/hszhao/PSPNet)] [[Usage Instructions](https://github.com/SysCV/bdd100k-models/tree/main/sem_seg#usage)]
+
+---
+
+## Panoptic Segmentation
+
+Template and guidelines below:
+
+### Method Name
+
+[Paper name]() [Venue and Year]
+
+Authors: Author list
+
+<details>
+<summary>Abstract</summary>
+Put your abstract here.
+</details>
+
+#### Results
+
+| Backbone | Lr schd | MS-train | PQ-val | Scores-val | PQ-test | Scores-test | Config | Weights | Preds | Visuals |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+|  |  |  |  | [scores]() |  | [scores]()  | [config]() | [model]() \| [MD5]() | [preds]() | [visuals]() |
+
+[[Code]()] [[Usage Instructions]()]
+
+Other information.
+
+### Guidelines
+
+- The scores file should be a JSON file with evaluation results for all the BDD100K panoptic segmentation [metrics](https://doc.bdd100k.com/evaluate.html#panoptic-segmentation).
+- The predictions should be a JSON file containing model predictions for the entire validation set.
+- The visuals should be a zip file with panoptic segmentation visualizations on the validation set.
+
+Example below:
+
+### Panoptic FPN
+
+[Panoptic Feature Pyramid Networks](https://arxiv.org/abs/1901.02446) [CVPR 2019]
+
+Authors: [Alexander Kirillov](https://alexander-kirillov.github.io/), [Ross Girshick](https://www.rossgirshick.info/), [Kaiming He](http://kaiminghe.com/), [Piotr Dollár](https://pdollar.github.io/)
+
+<details>
+<summary>Abstract</summary>
+The recently introduced panoptic segmentation task has renewed our community's interest in unifying the tasks of instance segmentation (for thing classes) and semantic segmentation (for stuff classes). However, current state-of-the-art methods for this joint task use separate and dissimilar networks for instance and semantic segmentation, without performing any shared computation. In this work, we aim to unify these methods at the architectural level, designing a single network for both tasks. Our approach is to endow Mask R-CNN, a popular instance segmentation method, with a semantic segmentation branch using a shared Feature Pyramid Network (FPN) backbone. Surprisingly, this simple baseline not only remains effective for instance segmentation, but also yields a lightweight, top-performing method for semantic segmentation. In this work, we perform a detailed study of this minimally extended version of Mask R-CNN with FPN, which we refer to as Panoptic FPN, and show it is a robust and accurate baseline for both tasks. Given its effectiveness and conceptual simplicity, we hope our method can serve as a strong baseline and aid future research in panoptic segmentation.
+</details>
+
+#### Results
+
+| Backbone | Lr schd | MS-train | PQ-val | Scores-val | PQ-test | Scores-test | Config | Weights | Preds | Visuals |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| R-50-FPN | 1x |  | 21.52 | [scores](https://dl.cv.ethz.ch/bdd100k/pan_seg/scores-val/panoptic_fpn_r50_fpn_1x_pan_seg_bdd100k.json) | 20.59 | [scores](https://dl.cv.ethz.ch/bdd100k/pan_seg/scores-test/panoptic_fpn_r50_fpn_1x_pan_seg_bdd100k.json) | [config](./configs/pan_seg/panoptic_fpn_r50_fpn_1x_pan_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/pan_seg/models/panoptic_fpn_r50_fpn_1x_pan_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/pan_seg/models/panoptic_fpn_r50_fpn_1x_pan_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/pan_seg/preds/panoptic_fpn_r50_fpn_1x_pan_seg_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/pan_seg/visuals/panoptic_fpn_r50_fpn_1x_pan_seg_bdd100k.zip) |
+| R-50-FPN | 3x | ✓ | 22.39 | [scores](https://dl.cv.ethz.ch/bdd100k/pan_seg/scores-val/panoptic_fpn_r50_fpn_3x_pan_seg_bdd100k.json) | 21.76 | [scores](https://dl.cv.ethz.ch/bdd100k/pan_seg/scores-test/panoptic_fpn_r50_fpn_3x_pan_seg_bdd100k.json) | [config](./configs/pan_seg/panoptic_fpn_r50_fpn_3x_pan_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/pan_seg/models/panoptic_fpn_r50_fpn_3x_pan_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/pan_seg/models/panoptic_fpn_r50_fpn_3x_pan_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/pan_seg/preds/panoptic_fpn_r50_fpn_3x_pan_seg_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/pan_seg/visuals/panoptic_fpn_r50_fpn_3x_pan_seg_bdd100k.zip) |
+| R-101-FPN | 3x | ✓ | 22.61 | [scores](https://dl.cv.ethz.ch/bdd100k/pan_seg/scores-val/panoptic_fpn_r101_fpn_3x_pan_seg_bdd100k.json) | 22.34 | [scores](https://dl.cv.ethz.ch/bdd100k/pan_seg/scores-test/panoptic_fpn_r101_fpn_3x_pan_seg_bdd100k.json) | [config](./configs/pan_seg/panoptic_fpn_r101_fpn_3x_pan_seg_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/pan_seg/models/panoptic_fpn_r101_fpn_3x_pan_seg_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/pan_seg/models/panoptic_fpn_r101_fpn_3x_pan_seg_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/pan_seg/preds/panoptic_fpn_r101_fpn_3x_pan_seg_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/pan_seg/visuals/panoptic_fpn_r101_fpn_3x_pan_seg_bdd100k.zip) |
+
+[[Code](https://github.com/facebookresearch/detectron2)] [[Usage Instructions](https://github.com/SysCV/bdd100k-models/tree/main/pan_seg#usage)]
+
+---
 
 ## MOT
 
@@ -323,11 +391,13 @@ Similarity learning has been recognized as a crucial step for object tracking. H
 
 #### Results
 
-| Detector  | mMOTA-val | mIDF1-val | ID Sw.-val |                                            Scores-val                                             | mMOTA-test | mIDF1-test | ID Sw.-test |                                            Scores-test                                             |                                                   Config                                                    |                                                                                         Weights                                                                                          |                                            Preds                                            |                                            Visuals                                             |
-| :-------: | :-------: | :-------: | :--------: | :-----------------------------------------------------------------------------------------------: | :--------: | :--------: | :---------: | :------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: |
+| Detector | mMOTA-val | mIDF1-val | ID Sw.-val | Scores-val | mMOTA-test | mIDF1-test | ID Sw.-test | Scores-test |   Config   |       Weights        |   Preds   |   Visuals   |
+| :------: | :-------: | :-------: | :--------: | :--------: | :--------: | :--------: | :---------: | :---------: | :--------: | :------------------: | :-------: | :---------: |
 | ResNet-50 |   36.6    |   51.6    |    6193    | [scores](https://dl.cv.ethz.ch/bdd100k/mot/scores-val/qdtrack-frcnn_r50_fpn_12e_mot_bdd100k.json) |    35.7    |    52.3    |    10822    | [scores](https://dl.cv.ethz.ch/bdd100k/mot/scores-test/qdtrack-frcnn_r50_fpn_12e_mot_bdd100k.json) | [config](https://github.com/SysCV/qdtrack/blob/master/configs/bdd100k/qdtrack-frcnn_r50_fpn_12e_bdd100k.py) | [model](https://dl.cv.ethz.ch/bdd100k/mot/models/qdtrack-frcnn_r50_fpn_12e_mot_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/mot/models/qdtrack-frcnn_r50_fpn_12e_mot_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/mot/preds/qdtrack-frcnn_r50_fpn_12e_mot_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/mot/visuals/qdtrack-frcnn_r50_fpn_12e_mot_bdd100k.zip) |
 
 [[Code](https://github.com/SysCV/qdtrack)] [[Usage Instructions](https://github.com/SysCV/qdtrack/blob/master/docs/GET_STARTED.md)]
+
+---
 
 ## MOTS
 
@@ -357,7 +427,7 @@ Other information.
 ### Guidelines
 
 - The scores file should be a JSON file with evaluation results for all the BDD100K MOTS [metrics](https://doc.bdd100k.com/evaluate.html#multi-object-tracking-and-segmentation-segmentation-tracking).
-- The predictions should be a zip file containing model predictions for the entire validation set (bitmasks).
+- The predictions should be a JSON file containing model predictions for the entire validation set.
 - The visuals should be a zip file with segmentation tracking visualizations on the validation set. Can be images or videos.
 
 Example below:
@@ -375,9 +445,9 @@ Multiple object tracking and segmentation requires detecting, tracking, and segm
 
 #### Results
 
-| Detector  | mMOTSA-val | mIDF1-val | ID Sw.-val |                                            Scores-val                                            | mMOTSA-test | mIDF1-test | ID Sw.-test |                                            Scores-test                                            |                                             Config                                             |                                                                                        Weights                                                                                         |                                           Preds                                           |                                            Visuals                                            |
-| :-------: | :--------: | :-------: | :--------: | :----------------------------------------------------------------------------------------------: | :---------: | :--------: | :---------: | :-----------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: |
-| ResNet-50 |    28.1    |   45.4    |    874     | [scores](https://dl.cv.ethz.ch/bdd100k/mots/scores-val/pcan-frcnn_r50_fpn_12e_mots_bdd100k.json) |    31.9     |    50.4    |     845     | [scores](https://dl.cv.ethz.ch/bdd100k/mots/scores-test/pcan-frcnn_r50_fpn_12e_mots_bdd100k.json) | [config](https://github.com/SysCV/pcan/blob/main/configs/segtrack-frcnn_r50_fpn_12e_bdd10k.py) | [model](https://dl.cv.ethz.ch/bdd100k/mots/models/pcan-frcnn_r50_fpn_12e_mots_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/mots/models/pcan-frcnn_r50_fpn_12e_mots_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/mots/preds/pcan-frcnn_r50_fpn_12e_mots_bdd100k.zip) | [visuals](https://dl.cv.ethz.ch/bdd100k/mots/visuals/pcan-frcnn_r50_fpn_12e_mots_bdd100k.zip) |
+| Detector | mMOTSA-val | mIDF1-val | ID Sw.-val | Scores-val | mMOTSA-test | mIDF1-test | ID Sw.-test | Scores-test |   Config   |       Weights        |   Preds   |   Visuals   |
+| :------: | :--------: | :-------: | :--------: | :--------: | :---------: | :--------: | :---------: | :---------: | :--------: | :------------------: | :-------: | :---------: |
+| ResNet-50 |    28.1    |   45.4    |    874     | [scores](https://dl.cv.ethz.ch/bdd100k/mots/scores-val/pcan-frcnn_r50_fpn_12e_mots_bdd100k.json) |    31.9     |    50.4    |     845     | [scores](https://dl.cv.ethz.ch/bdd100k/mots/scores-test/pcan-frcnn_r50_fpn_12e_mots_bdd100k.json) | [config](https://github.com/SysCV/pcan/blob/main/configs/segtrack-frcnn_r50_fpn_12e_bdd10k.py) | [model](https://dl.cv.ethz.ch/bdd100k/mots/models/pcan-frcnn_r50_fpn_12e_mots_bdd100k.pth) \| [MD5](https://dl.cv.ethz.ch/bdd100k/mots/models/pcan-frcnn_r50_fpn_12e_mots_bdd100k.md5) | [preds](https://dl.cv.ethz.ch/bdd100k/mots/preds/pcan-frcnn_r50_fpn_12e_mots_bdd100k.json) | [visuals](https://dl.cv.ethz.ch/bdd100k/mots/visuals/pcan-frcnn_r50_fpn_12e_mots_bdd100k.zip) |
 
 [[Code](https://github.com/SysCV/pcan)] [[Usage Instructions](https://github.com/SysCV/pcan/blob/main/docs/GET_STARTED.md)]
 
