@@ -41,5 +41,5 @@ optimizer = dict(
 lr_config = dict(warmup_iters=1000, step=[27, 33])
 
 # you need to set mode='dynamic' if you are using pytorch<=1.5.0
-fp16 = dict(loss_scale=dict(init_scale=512))load_from = "https://dl.cv.ethz.ch/bdd100k/det/models/cascade_rcnn_convnext-t_fpn_fp16_3x_det_bdd100k.pth"
+fp16 = dict(loss_scale=dict(init_scale=512))
 load_from = "https://dl.cv.ethz.ch/bdd100k/det/models/cascade_rcnn_convnext-t_fpn_fp16_3x_det_bdd100k.pth"
