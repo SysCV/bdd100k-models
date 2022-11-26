@@ -1,6 +1,6 @@
-"""Faster RCNN with Swin-B, 3x schedule, MS training."""
+"""Faster RCNN with Swin-B, 3x schedule, strong augmentations."""
 
-_base_ = "./faster_rcnn_swin-s_fpn_fp16_3x_det_bdd100k.py"
+_base_ = "./faster_rcnn_swin-s_fpn_fp16_3x_strong_det_bdd100k.py"
 
 pretrained = "https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224_22k.pth"  # noqa
 model = dict(
@@ -25,4 +25,4 @@ model = dict(
     ),
     neck=dict(in_channels=[128, 256, 512, 1024]),
 )
-load_from = "https://dl.cv.ethz.ch/bdd100k/det/models/faster_rcnn_swin-b_fpn_fp16_3x_det_bdd100k.pth"
+load_from = "https://dl.cv.ethz.ch/bdd100k/det/models/faster_rcnn_swin-b_fpn_fp16_3x_strong_det_bdd100k.pth"
